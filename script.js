@@ -1,47 +1,24 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #b4c6fc;
-    font-family: Arial, sans-serif;
+function appendValue(value) {
+    document.getElementById('display').value += value;
 }
 
-.calculator {
-    background: rgb(124, 76, 244);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    width: 260px;
+function clearDisplay() {
+    document.getElementById('display').value = '';
 }
 
-#display {
-    width: 100%;
-    padding: 5px;
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: right;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+function calculate() {
+    try {
+        const result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+    } catch {
+        document.getElementById('display').value = 'Error';
+    }
 }
-
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-button {
-    padding: 15px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background: #977cfa;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #1c03a9;
+function square() {
+    try {
+        const value = eval(document.getElementById('display').value);
+        document.getElementById('display').value = Math.pow(value, 2);
+    } catch {
+        document.getElementById('display').value = 'Error';
+    }
 }
